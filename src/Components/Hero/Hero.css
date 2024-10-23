@@ -1,0 +1,32 @@
+.hero-container{
+    width: 100%;
+}
+
+.hero-container video{
+    width: 100%;
+    position: relative;
+}
+
+.hero-container .content{
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -35%);
+    text-align: center;
+    color: white;
+}
+
+.hero-container .content h3{
+    margin: 20px 0px 20px 0px;
+    font-size: 32px;
+}
+
+.hero-container .content button{
+    background-color: white;
+    color: black;
+    padding: 13px;
+    padding-inline: 30px;
+    font-size: 16px;
+    border-radius: 7px;
+    border: none;
+}

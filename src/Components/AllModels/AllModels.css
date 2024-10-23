@@ -1,0 +1,48 @@
+.models-container h3{
+    text-align: center;
+    font-weight: 600;
+    margin-top: 100px;
+}
+
+.models-container .list-items{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.models-container .list-items .card, 
+.models-container .card .card-body,
+.models-container .card .card-img img{
+    width: 21rem;
+}
+
+.models-container .card .card-body{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.models-container .card .card-img{
+    overflow: hidden;
+}
+
+.models-container .card .card-img img{
+    transition: 0.3s;
+}
+
+.models-container .card .card-img img:hover{
+    scale: 1.05;
+    cursor: pointer;
+}
+
+.models-container .compare{
+    text-align: center;
+    margin-top: 50px;
+}
+
+.models-container .compare button{
+    padding: 10px;
+    padding-inline: 25px;
+    border: 2px solid rgb(25, 148, 243);
+    border-radius: 5px;
+    font-weight: 600;
+}
