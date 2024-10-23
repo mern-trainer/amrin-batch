@@ -5,6 +5,7 @@ import { useState } from "react"
 import LandingPage from "./Pages/LandingPage"
 import Shop from "./Pages/Shop"
 import Counter from "./Pages/Counter"
+import MultiCounter from "./Pages/MultiCounter"
 
 // state => is an object to handle/manage data in a react component
 // Hooks => Functions to handle state and lifecycle of a component.
@@ -12,7 +13,8 @@ import Counter from "./Pages/Counter"
 
 const App = () => { 
 
-    return <Counter />
+    // return <Counter />
+    return <MultiCounter />
 
     // const [counter, setCounter] = useState({ counterOne: 0, counterTwo: 0 }) // array destructure
     
