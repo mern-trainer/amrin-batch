@@ -2,12 +2,14 @@ import { Container, Row } from "react-bootstrap"
 import { products } from "../Constants/products"
 import ProductList from "../Components/ProductList"
 import { useState } from "react"
+import NavBar from "../Components/NavBar"
 
 const ShopPage = () => {
 
     const [cartList, setCartList] = useState([])
 
     return <div>
+        <NavBar />
         <Container fluid>
             <Row>
                 {
