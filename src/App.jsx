@@ -4,6 +4,8 @@
 
 import { Fragment } from "react"
 import TodoPage from "./Pages/TodoPage"
+import A from "./Pages/A"
+import ShopPage from "./Pages/ShopPage"
 
 const App = () => { 
     // return <div className="text-center">
@@ -15,7 +17,9 @@ const App = () => {
     //     <ArrayUpdateState />
     // </div>
     return <Fragment>
-        <TodoPage />
+        {/* <TodoPage /> */}
+        {/* <A /> */}
+        <ShopPage />
     </Fragment>
 }
 
