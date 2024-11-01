@@ -2,20 +2,14 @@
 // to create => createContext() method
 // to use context states => useContext(<context>) Hook => 
 
-import { createContext, Fragment, useState } from "react"
 import ContextPage from "./Pages/ContextPage"
-
-export const CounterContext = createContext()
+import { CounterProvider } from "./Providers/CounterProvider"
 
 const App = () => {
 
-    const [counter, setCounter] = useState(0)
-
-    const values = { counter, setCounter }
-
-    return <CounterContext.Provider value={values}>
+    return <CounterProvider>
         <ContextPage />
-    </CounterContext.Provider>
+    </CounterProvider>
 }
 
 export default App
