@@ -1,11 +1,9 @@
 import { useContext } from "react"
 import { CounterContext } from "../Providers/CounterProvider"
 
-
 const ContextPage = () => {
-
     const { counter, setCounter, counter2, setCounter2 } = useContext(CounterContext)
-
+    
     return <div className="d-flex flex-column gap-2 mt-3 align-items-center">
         <div>{ counter }</div>
         <div className="d-flex gap-3">

@@ -1,5 +1,6 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import toast from "react-hot-toast";
+import { v4 } from "uuid";
 
 export const TodoContext = createContext()
 
@@ -11,15 +12,50 @@ export const TodoProvider = ({ children }) => {
         if (title === "") {
             return toast.error("Task is required!")
         }
-        if (todoList.includes(title)) {
-            return toast.error("Task already exist!")
+        const currentDateTime = new Date().toLocaleString("en-IN")
+        const taskObject = {
+            id: v4(),
+            title: title,
+            createdAt: currentDateTime,
+            updatedAt: currentDateTime,
+            completed: false
         }
-        setTodoList([...todoList, title])
+        setTodoList([...todoList, taskObject])
     }
 
-    const values = { todoList, setTodoList, addToList }
+    const handleRemove = (id) => {
+        const res = todoList.filter(todo => todo.id != id)
+        setTodoList(res)
+    }
+
+    const updateCompleted = (id) => {
+        const currentDateTime = new Date().toLocaleString("en-IN")
+        const res = todoList.map(todo => {
+            if (todo.id == id) {
+                let status;
+                if (todo.completed) {
+                    status = false
+                } else {
+                    status = true
+                }
+                return {
+                    ...todo,
+                    completed: status,
+                    updatedAt: currentDateTime
+                }
+            }
+            return todo
+        })
+        setTodoList(res)
+    }
+
+    const values = { todoList, addToList, handleRemove, updateCompleted }
 
     return <TodoContext.Provider value={values}>
         {children}
     </TodoContext.Provider>
+}
+
+export const useTodo = () => {
+    return useContext(TodoContext)
 }

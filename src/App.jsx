@@ -4,17 +4,16 @@
 
 import { Toaster } from "react-hot-toast"
 import ContextPage from "./Pages/ContextPage"
-import { CounterProvider } from "./Providers/CounterProvider"
 import { TodoProvider } from "./Providers/TodoProvider"
+import Todo from "./Pages/Todo"
 
 const App = () => {
 
-    return <CounterProvider>
-        <TodoProvider>
-            <ContextPage />
-            <Toaster position="top-right"/>
-        </TodoProvider>
-    </CounterProvider>
+    return <TodoProvider>
+        {/* <ContextPage /> */}
+        <Todo />
+        <Toaster position="top-right"/>
+    </TodoProvider>
 }
 
 export default App
