@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useTodo } from "../Providers/TodoProvider"
 import { FaCheckCircle } from "react-icons/fa"
 import { FaCheck, FaCircleXmark, FaTrash } from "react-icons/fa6"
@@ -7,6 +7,13 @@ const Todo = () => {
 
     const { todoList, addToList, handleRemove, updateCompleted } = useTodo()
     const [todo, setTodo] = useState("")
+    const [filteredList, setFilteredList] = useState([])
+    const [search, setSearch] = useState("")
+
+    useEffect(() => {
+        const res = todoList.filter(item => item.title.toLowerCase().includes(search.toLowerCase()))
+        setFilteredList(res)
+    }, [search, todoList])
 
     return <div className="d-flex flex-column align-items-center mt-5"> 
         <div className="w-50">
@@ -14,8 +21,9 @@ const Todo = () => {
             <button onClick={() => addToList(todo)} className="p-1 w-100 bg-secondary text-light border-0 mt-3">Add To List</button>
         </div>
         <div className="w-50 mt-3 d-flex flex-column gap-2">
+            <input type="text" onChange={(e) => setSearch(e.target.value)} value={search}/>
             {
-                todoList.map((item) => {
+                filteredList.map((item) => {
                     // key => unique identifier
                     return <div key={item.id} className="p-2 bg-light  d-flex justify-content-between text-dark w-100">
                         <div style={{width: "90%"}} className="text-truncate d-flex gap-2 align-items-center">
