@@ -4,11 +4,40 @@ import { FaShoppingCart, FaTrash } from "react-icons/fa"
 const ProductList = ({ product, discountPrice, cart, setCartList, cartList }) => {
 
     const handleAddToCart = () => {
-        setCartList((cartList) => ([...cartList, product]))
+        const index = cartList.findIndex(item => item.id === product.id)
+        if (index === -1) {
+            product.quantity = 1
+            setCartList((cartList) => ([...cartList, product]))
+        } else {
+            const res = cartList.map(item => {
+                if (item.id === product.id) {
+                    return {...item, quantity: item.quantity + 1}
+                }
+                return item
+            })
+            setCartList(res)
+        }
+        
     }
 
     const handleRemoveFromCart = () => {
-        const res = cartList.filter(item => item.id != product.id)
+        const res = cartList.filter(item => item.id !== product.id)
+        setCartList(res)
+    }
+
+    const handleQuantity = (operator) => {
+        if (operator == "-" && product.quantity == 1) {
+            return handleRemoveFromCart()
+        }
+        const res = cartList.map(item => {
+            if (item.id === product.id) {
+                return {
+                    ...item,
+                    quantity: operator == "+" ? item.quantity + 1 : item.quantity - 1
+                }
+            }
+            return item
+        })
         setCartList(res)
     }
 
@@ -22,9 +51,16 @@ const ProductList = ({ product, discountPrice, cart, setCartList, cartList }) =>
                 <div>{product.rating}</div>
                 <div>
                     <s className="text-muted">${product.price}</s>
-                    <span className="ms-1">${discountPrice}</span>
+                    <span className="ms-1">${(discountPrice * product.quantity).toFixed(2)}</span>
                 </div>
             </div>
+            {
+                cart && <div className="d-flex my-2 justify-content-between align-items-center">
+                    <button className="btn btn-success w-50" onClick={() => handleQuantity("-")}> - </button>
+                    <div className="w-100">{product.quantity}</div>
+                    <button className="btn btn-success w-50" onClick={() => handleQuantity("+")}> + </button>
+                </div>
+            }
         </div>
         {cart ? <Button variant="danger" className="w-100" onClick={handleRemoveFromCart}><FaTrash />Remove</Button> :
             <Button variant="success" className="w-100" onClick={handleAddToCart}><FaShoppingCart /> Add To Cart</Button>}

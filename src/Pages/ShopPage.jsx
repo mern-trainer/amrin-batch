@@ -1,12 +1,22 @@
 import { Container, Row } from "react-bootstrap"
-import { products } from "../Constants/products"
 import ProductList from "../Components/ProductList"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import NavBar from "../Components/NavBar"
+import axios from "axios"
 
 const ShopPage = () => {
 
     const [cartList, setCartList] = useState([])
+    const [products, setProducts] = useState([])
+
+    const getAllProducts = async () => {
+        const { data } = await axios.get(`https://dummyjson.com/products?limit=10`) 
+        setProducts(data.products)
+    }
+
+    useEffect(() => { 
+        getAllProducts() // will be executed 
+    }, [])
 
     return <div>
         <NavBar />
@@ -17,7 +27,7 @@ const ShopPage = () => {
 
                         const discountPrice = (product.price - (product.price * product.discountPercentage / 100)).toFixed(2)
 
-                        return <ProductList key={product.id} product={product} discountPrice={discountPrice} setCartList={setCartList}/>
+                        return <ProductList key={product.id} product={product} discountPrice={discountPrice} setCartList={setCartList} cartList={cartList}/>
                     })
                 }
             </Row>
