@@ -1,5 +1,6 @@
 import { Button, Col } from "react-bootstrap"
 import { FaShoppingCart, FaTrash } from "react-icons/fa"
+import { useNavigate } from "react-router-dom"
 
 const ProductList = ({ product, discountPrice, cart, setCartList, cartList }) => {
 
@@ -19,6 +20,8 @@ const ProductList = ({ product, discountPrice, cart, setCartList, cartList }) =>
         }
         
     }
+
+    const navigate = useNavigate()
 
     const handleRemoveFromCart = () => {
         const res = cartList.filter(item => item.id !== product.id)
@@ -42,7 +45,7 @@ const ProductList = ({ product, discountPrice, cart, setCartList, cartList }) =>
     }
 
     return <Col className="bg-light p-2" xs={12} sm={6} md={4} lg={3} xxl={2}>
-        <div className="d-flex justify-content-center">
+        <div className="d-flex justify-content-center" onClick={() => navigate("/shop/view/" + product.id)}>
             <img src={product.images[0]} alt="" style={{width: "15rem", aspectRatio: 1/1, objectFit: "contain"}} />
         </div>
         <div className="text-center mb-3">
@@ -51,7 +54,7 @@ const ProductList = ({ product, discountPrice, cart, setCartList, cartList }) =>
                 <div>{product.rating}</div>
                 <div>
                     <s className="text-muted">${product.price}</s>
-                    <span className="ms-1">${(discountPrice * product.quantity).toFixed(2)}</span>
+                    <span className="ms-1">${(discountPrice * (product.quantity || 1)).toFixed(2)}</span>
                 </div>
             </div>
             {
