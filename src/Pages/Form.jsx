@@ -9,7 +9,10 @@ const Form = () => {
     const handleSubmit = (event) => {
         event.preventDefault()
         console.log(formData)
-    }
+        if (formData.username == "") {
+            
+        }
+    }   
 
     const handleChange = (event) => {
         const { name, value } = event.target

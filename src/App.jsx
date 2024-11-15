@@ -15,6 +15,7 @@ import PageNotFound from "./Pages/PageNotFound"
 import CartPage from "./Pages/CartPage"
 import ProductSingleView from "./Pages/ProductSingleView"
 import Form from "./Pages/Form"
+import Formik from "./Pages/Formik"
 
 const App = () => {
 // UX 
@@ -27,6 +28,7 @@ const App = () => {
             <Route path="/about" Component={AboutPage} />
             <Route path="/shop" Component={ShopPage} />
             <Route path="/form" Component={Form} />
+            <Route path="/formik" Component={Formik} />
             <Route path="/cart" Component={CartPage} />
             <Route path="/shop/view/:product_id" Component={ProductSingleView} />
             <Route path="*" Component={PageNotFound} /> {/* not found page */}
