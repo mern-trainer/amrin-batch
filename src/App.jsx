@@ -14,14 +14,19 @@ import AboutPage from "./Pages/AboutPage"
 import PageNotFound from "./Pages/PageNotFound"
 import CartPage from "./Pages/CartPage"
 import ProductSingleView from "./Pages/ProductSingleView"
+import Form from "./Pages/Form"
 
 const App = () => {
 // UX 
-    return <BrowserRouter>
+    return <BrowserRouter future={{
+        v7_startTransition: true,
+        v7_relativeSplatPath: true
+    }}>
         <Routes>
             <Route path="/" Component={HomePage}/> 
             <Route path="/about" Component={AboutPage} />
             <Route path="/shop" Component={ShopPage} />
+            <Route path="/form" Component={Form} />
             <Route path="/cart" Component={CartPage} />
             <Route path="/shop/view/:product_id" Component={ProductSingleView} />
             <Route path="*" Component={PageNotFound} /> {/* not found page */}
