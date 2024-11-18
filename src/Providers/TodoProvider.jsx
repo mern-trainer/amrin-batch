@@ -24,14 +24,14 @@ export const TodoProvider = ({ children }) => {
     }
 
     const handleRemove = (id) => {
-        const res = todoList.filter(todo => todo.id != id)
+        const res = todoList.filter(todo => todo.id !== id)
         setTodoList(res)
     }
 
     const updateCompleted = (id) => {
         const currentDateTime = new Date().toLocaleString("en-IN")
         const res = todoList.map(todo => {
-            if (todo.id == id) {
+            if (todo.id === id) {
                 let status;
                 if (todo.completed) {
                     status = false
