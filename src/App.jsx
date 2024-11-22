@@ -8,6 +8,7 @@ import ProductSingleView from "./Pages/ProductSingleView"
 import Form from "./Pages/Form"
 import Formik from "./Pages/Formik"
 import Redux from "./Pages/Redux"
+import TodoPage from "./Pages/TodoPage"
 
 const App = () => {
 // UX 
@@ -23,7 +24,9 @@ const App = () => {
             <Route path="/formik" Component={Formik} />
             <Route path="/cart" Component={CartPage} />
             <Route path="/redux" Component={Redux} />
+            <Route path="/todo" Component={TodoPage} />
             <Route path="/shop/view/:product_id" Component={ProductSingleView} />
+
             <Route path="*" Component={PageNotFound} /> {/* not found page */}
         </Routes>
     </BrowserRouter>

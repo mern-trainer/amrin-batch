@@ -1,12 +1,17 @@
 import { useState } from "react"
 import { FaCheck, FaCheckCircle } from "react-icons/fa"
 import { FaCircleXmark, FaTrash, FaXmark } from "react-icons/fa6"
+import { useDispatch, useSelector } from "react-redux"
 import { v4 } from "uuid"
+import { createTodo, removeTodo, updateTodoStatus } from "../Redux/todoSlice"
 
 const TodoPage = () => { // todo application => task manager
     
-    const [todoList, setTodoList] = useState([])
+    const { todoList } = useSelector(store => store.todo)
+    // const [todoList, setTodoList] = useState([])
     const [todo, setTodo] = useState("")
+
+    const dispatch = useDispatch()
 
     const handleAddTask = () => {
         if (todo == "") {
@@ -20,33 +25,17 @@ const TodoPage = () => { // todo application => task manager
             createdAt: new Date().toLocaleString("en-IN").toUpperCase(),
             updatedAt: new Date().toLocaleString("en-IN").toUpperCase(),
         }
-        setTodoList([taskObject, ...todoList])
+        // - setTodoList([taskObject, ...todoList])
+        dispatch(createTodo(taskObject))
         setTodo("")
     }
 
     const handleRemove = (removeId) => { 
-        const res = todoList.filter((item) => item.id !== removeId)
-        setTodoList(res)
+        dispatch(removeTodo({ removeId }))
     }
 
     const handleStatusUpdate = (updateId) => {
-        const res = todoList.map(item => {
-            if (item.id == updateId) {
-                let status;
-                if (item.completed) {
-                    status = false
-                } else {
-                    status = true
-                }
-                return {
-                    ...item,
-                    completed: status,
-                    updatedAt: new Date().toLocaleString("en-IN").toUpperCase(),
-                }
-            }
-            return item
-        })
-        setTodoList(res)
+        dispatch(updateTodoStatus({ updateId }))
     }
 
     return <div className="d-flex flex-column align-items-center mt-5"> 
