@@ -1,12 +1,3 @@
-// context api => Global state management
-// to create => createContext() method
-// to use context states => useContext(<context>) Hook => 
-
-import { Toaster } from "react-hot-toast"
-// import ContextPage from "./Pages/ContextPage"
-import { TodoProvider } from "./Providers/TodoProvider"
-// import Todo from "./Pages/Todo"
-// import EffectHook from "./Pages/EffectHook"
 import ShopPage from "./Pages/ShopPage"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import HomePage from "./Pages/HomePage"
@@ -36,12 +27,6 @@ const App = () => {
             <Route path="*" Component={PageNotFound} /> {/* not found page */}
         </Routes>
     </BrowserRouter>
-        {/* <ContextPage /> */}
-        {/* <Todo /> */}
-        {/* <EffectHook /> */}
-        {/* <ShopPage /> */}
-        {/* <Toaster position="top-right"/> */}
-    
 }
 
 export default App

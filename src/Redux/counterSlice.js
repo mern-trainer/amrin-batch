@@ -7,8 +7,8 @@ const counterSlice = createSlice({
     },
     reducers: {
         increment: (state, action) => {
-            console.log(action.payload)
-            state.counter += action.payload.inc // a *= b
+            const { inc } = action.payload
+            state.counter = state.counter + inc
         }
     }
 })

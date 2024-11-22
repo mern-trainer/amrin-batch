@@ -5,7 +5,7 @@ import "./index.css"
 import { TodoProvider } from './Providers/TodoProvider';
 import { CartProvider } from './Providers/CartProvider';
 import { Provider } from 'react-redux';
-import { store } from './Redux/store';
+import { store } from './Redux/Store';
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
 
