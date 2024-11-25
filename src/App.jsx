@@ -9,6 +9,7 @@ import Form from "./Pages/Form"
 import Formik from "./Pages/Formik"
 import Redux from "./Pages/Redux"
 import TodoPage from "./Pages/TodoPage"
+import UseReducer from "./Pages/useReducer"
 
 const App = () => {
 // UX 
@@ -25,6 +26,7 @@ const App = () => {
             <Route path="/cart" Component={CartPage} />
             <Route path="/redux" Component={Redux} />
             <Route path="/todo" Component={TodoPage} />
+            <Route path="/use-reducer" Component={UseReducer} />
             <Route path="/shop/view/:product_id" Component={ProductSingleView} />
 
             <Route path="*" Component={PageNotFound} /> {/* not found page */}
