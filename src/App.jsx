@@ -10,6 +10,8 @@ import Formik from "./Pages/Formik"
 import Redux from "./Pages/Redux"
 import TodoPage from "./Pages/TodoPage"
 import UseReducer from "./Pages/useReducer"
+import Crud from "./Pages/CRUD"
+import AddHotel from "./Pages/AddHotel"
 
 const App = () => {
 // UX 
@@ -28,6 +30,8 @@ const App = () => {
             <Route path="/todo" Component={TodoPage} />
             <Route path="/use-reducer" Component={UseReducer} />
             <Route path="/shop/view/:product_id" Component={ProductSingleView} />
+            <Route path="/crud" Component={Crud} />
+            <Route path="/hostel/add" Component={AddHotel} />
 
             <Route path="*" Component={PageNotFound} /> {/* not found page */}
         </Routes>

@@ -6,13 +6,16 @@ import { TodoProvider } from './Providers/TodoProvider';
 import { CartProvider } from './Providers/CartProvider';
 import { Provider } from 'react-redux';
 import { store } from './Redux/Store';
+import { HotelProvider } from './Providers/HotelProvider';
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
 
 root.render(<Provider store={store}>
     <TodoProvider>
         <CartProvider>
-            <App />
+            <HotelProvider>
+                <App />
+            </HotelProvider>
         </CartProvider>
     </TodoProvider>
 </Provider>)
